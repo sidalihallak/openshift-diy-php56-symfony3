@@ -90,7 +90,7 @@ function symfony_init() {
     # Setup assets/assetic
     echo "Application setup assets."
     ${php_bin} bin/console assets:install -n --env=prod --no-debug web
-    ${php_bin} bin/console assetic:dump -n --env=prod --no-debug web
+    #${php_bin} bin/console assetic:dump -n --env=prod --no-debug web
 
     popd
 }
