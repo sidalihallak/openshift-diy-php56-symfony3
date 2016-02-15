@@ -106,7 +106,7 @@ http {
         add_header Strict-Transport-Security max-age=691200;
 
         location / {
-            index  index.html  index.htm  index.php ;
+            index  index.html  index.htm  index.php app.php;
 
             try_files $uri $uri/ @rewrites;
         }
@@ -128,11 +128,11 @@ http {
         }
 
         location @rewrites {
-            rewrite ^(.*)$ /index.php/$1 last;
+            rewrite ^(.*)$ /app.php/$1 last;
         }
 
         # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
-        location ~ ^/index\.php(/|$) {
+        location ~ ^/app\.php(/|$) {
             fastcgi_pass unix:${OPENSHIFT_RUN_DIR}/php-fpm.socket;
 
             fastcgi_param SCRIPT_FILENAME    $document_root$fastcgi_script_name;
