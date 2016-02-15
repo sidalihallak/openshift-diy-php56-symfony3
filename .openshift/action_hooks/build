@@ -48,6 +48,7 @@ source ${OPENSHIFT_REPO_DIR}/.openshift/action_hooks/build_util
 source ${OPENSHIFT_REPO_DIR}/.openshift/action_hooks/build_nginx
 source ${OPENSHIFT_REPO_DIR}/.openshift/action_hooks/build_php_libs
 source ${OPENSHIFT_REPO_DIR}/.openshift/action_hooks/build_php
+source ${OPENSHIFT_REPO_DIR}/.openshift/action_hooks/build_symfony
 
 # Check nginx
 check_nginx
@@ -59,6 +60,10 @@ check_php
 for ext in "${!PHP_PECL[@]}"; do
     check_pecl ${ext} ${PHP_PECL["$ext"]} ${PHP_PECL_CONFIGURE["$ext"]};
 done
+
+
+
+check_symfony
 
 # Extra
 source ${OPENSHIFT_REPO_DIR}/.openshift/action_hooks/build_node
